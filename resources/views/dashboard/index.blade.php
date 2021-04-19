@@ -1,5 +1,7 @@
 @include('layouts/header_include')
 @include('layouts/navbar')
+@include('layouts/leftbar')
+
 
 	<div class="page-content-wrapper ">
 		<div class="container-fluid">
