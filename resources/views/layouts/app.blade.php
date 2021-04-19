@@ -1,7 +1,7 @@
 @include('layouts/header_include')
 @include('layouts/navbar')
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
         
