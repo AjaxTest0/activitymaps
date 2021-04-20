@@ -17,7 +17,8 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
-	Route::post('/store',[App\Http\Controllers\MapsController::class, 'store']);
+	Route::post('/store',['MapsController@store']);
+	Route::get('/index',[App\Http\Controllers\MapsController::class, 'index']);
 // Route::group('prefix'=>'maps', function(){
 // })
 

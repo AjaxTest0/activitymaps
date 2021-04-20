@@ -9,11 +9,18 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/home">home</a>
-                        </li>
-                    </ul>
+                    @auth
+                    @if(Auth::user()->role_id == 1)
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/home">New Map Record</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/index">Map Record</a>
+                            </li>
+                        </ul>
+                    @endif
+                    @endauth    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
