@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Activity Maps </title>
-    <link href="icon/activityMapLogo.png" rel="icon" type="image/icon type">
+    <link href="{{ asset('icon/activityMapLogo.png') }}" rel="icon" type="image/icon type">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

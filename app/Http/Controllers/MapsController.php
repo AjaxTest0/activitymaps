@@ -14,7 +14,7 @@ class MapsController extends Controller
      */
     public function index()
     {
-        $maps = Maps::all();
+        $maps = Maps::get();
         return view('/dashboard/index')->with('maps',$maps);
     }
 
@@ -47,6 +47,7 @@ class MapsController extends Controller
              'color' => $request->color,
              'user_id' => auth()->user()->id,
         ];
+
         Maps::create($data);
 
 
@@ -74,7 +75,7 @@ class MapsController extends Controller
      */
     public function edit(Maps $maps)
     {
-        //
+        return view('dashboard.edit')->with('map',$maps);
     }
 
     /**
@@ -86,7 +87,11 @@ class MapsController extends Controller
      */
     public function update(Request $request, Maps $maps)
     {
-        //
+        $input = $request->all();
+        // dd($input);
+        $maps->update($input);
+        return redirect('/index');
+        
     }
 
     /**
@@ -97,6 +102,9 @@ class MapsController extends Controller
      */
     public function destroy(Maps $maps)
     {
-        //
+        $maps->delete();
+        $status = 'Map Deleted';
+        return back()->with(['status' => $status]); 
+
     }
 }

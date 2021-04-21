@@ -5,10 +5,11 @@
 	    #map {
 	        height: 600px;
 	        /* The height is 400 pixels */
-	        width: 	890px;
+	        width: 	1040px;
 	        /* The width is the width of the web page */
 	      }
     </style>
+    <script type="text/javascript"> let locations</script>
 	<div class="page-content-wrapper">
 		<div class="container">
 			@if (session('status'))
@@ -30,29 +31,37 @@
             		<div class="table-responsive-lg">
             			<table class="table-borderless table-hover">
             			<thead class="text-center ">
+                            <th>#</th>
             				<th>Type</th>	
             				<th>Proponent</th>	
             				<th>From</th>	
             				<th>To</th>	
             				<th>Description</th>	
             				<th>Latitude</th>	
-            				<th>Longitude</th>	
+            				<th>Longitude</th>
+                            <th>Action</th>	
             			</thead>
             			<tbody>
-							@foreach($maps as $map)
+							@foreach($maps as $key => $map)
             				<tr>
+                                <td>{{ ++$key }}</td>
             					<td>{{ $map->type }}</td>
             					<td>{{ $map->proponent }}</td>
             					<td>{{ $map->from }}</td>
             					<td>{{ $map->to }}</td>
             					<td>{{ $map->description }}</td>
-            					<td id="latitude">{{ $map->latitude }}</td>
-            					<td id="longitude">{{ $map->longitude }}</td>
-            					<script type="text/javascript">
-            						var locations =[
-            							[{{ $map->longitude }},{{ $map->latitude }}],
-            						] 
-            					</script>
+            					<td id="latitude" class="cord">{{ $map->latitude }}</td>
+            					<td id="longitude" class="cord">{{ $map->longitude }}</td>
+                                <td class="clearfix">
+                                    <form action="/edit/{{ $map->id }}" class="float-left m-1">                                        
+                                        <button class="btn btn-warning btn-sm" onclick="edit()"><i class="far fa-edit"></i></button>
+                                    </form>
+                                    <form action="/delete/{{ $map->id }}" method="POST" class="float-right m-1">
+                                        @csrf
+                                        <button class="btn btn-danger btn-sm" type="submit"><i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                </td>
+                                <span class="cord" data-latitude="{{ $map->latitude }}" data-longitude="{{ $map->longitude }}"></span>
             				</tr>
 							@endforeach
             			</tbody>
@@ -64,25 +73,4 @@
     </div> 
 
 @include('layouts/footer')
-	<script>
-
-		      // Initialize and add the map
-		      function initMap() {
-		        // The location of Uluru
-
-		        let uluru;
-		        uluru = { lat: -33, lng: 151 };
-		        // The map, centered at Uluru
-		        const map = new google.maps.Map(document.getElementById("map"), {
-		          zoom: 4,
-		          center: uluru,
-		        });
-
-		        // The marker, positioned at Uluru
-		        const marker = new google.maps.Marker({
-		          position: uluru,
-		          map: map,
-		        });
-
-		      }    
-   	</script>
+    <script src="{{asset('assets/js/pages/mapIndex.js')}}"></script>
