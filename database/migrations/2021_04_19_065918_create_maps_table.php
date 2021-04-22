@@ -20,8 +20,8 @@ class CreateMapsTable extends Migration
             $table->dateTime('from');
             $table->dateTime('to');
             $table->string('description');
-            $table->float('latitude');
-            $table->float('longitude');
+            $table->decimal('latitude',8,7);
+            $table->decimal('longitude'8,7);
             $table->string('color');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();

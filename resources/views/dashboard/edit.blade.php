@@ -1,14 +1,6 @@
-@include('layouts/header_include')
-@include('layouts/navbar')
-    <style type="text/css">
-      /* Set the size of the div element that contains the map */
-      #map {
-        height: 600px;
-        /* The height is 400 pixels */
-        width: 750px;
-        /* The width is the width of the web page */
-      }
-    </style>
+@extends('layouts.app')
+
+@section('content')
 
 	<div class="page-content-wrapper ">
 		<div class="container">
@@ -48,16 +40,18 @@
 		                                    <label for="from" class="col-sm-2 col-form-label">From:</label>
 		                                    <div class="col-sm-10">
 		                                        <input class="form-control" type="datetime-local" 
-		                                        	name="from" id="from" value="{{ Carbon\Carbon::parse($map->from)->format('Y/m/d')  }}" required>
+		                                        	name="from" id="from" value="{{ $map->to }}">
 		                                    </div>
 		                                </div>
 
-		                                <div class="form-group row"> <label for="to"
-		                                class="col-sm-2 col-form-label">To:</label>
-		                                <div class="col-sm-10"> <input
-		                                class="form-control" type="datetime-local" 
-		                                name="to" id="to" value="{{  Carbon\Carbon::parse($map->to)->format('d/m/Y h:i A')  }}"
-		                                required> </div> </div>
+		                                <div class="form-group row"> 
+		                                	<label for="to" class="col-sm-2 col-form-label">To:</label>
+		                                	<div class="col-sm-10"> 
+		                                		<input class="form-control" type="datetime-local"  name="to" id="to" 
+		                                			value="{{  $map->to  }}" 
+		                                			placeholder='$map->to'>
+		                                	</div> 
+		                                </div>
 
 		                                <div class="form-group row">
 		                                    <label for="description" class="col-sm-2 col-form-label">Description:</label>
@@ -103,6 +97,6 @@
     </div>
 </div>
 
-@include('layouts/footer')
+@endsection
 
 

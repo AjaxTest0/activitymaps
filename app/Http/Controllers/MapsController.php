@@ -64,7 +64,7 @@ class MapsController extends Controller
      */
     public function show(Maps $maps)
     {
-        //
+       return view('dashboard.marker')->with('maps',$maps);
     }
 
     /**

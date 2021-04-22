@@ -17,8 +17,10 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
+
 	Route::get('/index',[App\Http\Controllers\MapsController::class, 'index']);
 	Route::get('/edit/{maps}',[App\Http\Controllers\MapsController::class, 'edit']);
+	Route::get('/marker/{maps}',[App\Http\Controllers\MapsController::class, 'show']);
 	Route::post('/store',[App\Http\Controllers\MapsController::class, 'store']);
 	Route::post('/update/{maps}',[App\Http\Controllers\MapsController::class, 'update']);
 	Route::post('/delete/{maps}',[App\Http\Controllers\MapsController::class, 'destroy']);

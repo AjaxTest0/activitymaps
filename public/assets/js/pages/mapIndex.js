@@ -5,6 +5,13 @@
                'longitude': Number($(el).data('longitude')),
             }
         });
+        function zoom(latt,lngg){
+            coords = { lat: latt, lng: lngg };
+            var marker = new google.maps.Marker({
+                        center:coords,
+                        map:map,
+                    });
+        }
 		      // Initialize and add the map
             function initMap() {
                 let uluru;
@@ -14,7 +21,6 @@
                     zoom: 4,
                     center: uluru,
                 });
-                addMarker(uluru);
                 var i = 0;
                 while(Object.values(cord).length>=i){                    
                     if( cord[i] != undefined)
