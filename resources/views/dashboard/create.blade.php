@@ -22,8 +22,10 @@
 	            <div class="row m-5 p-5">
 	            	<div class="col-12">
 	            		<div class="card m-b-20">
+							<div class="card-header">
+								<h4 class="mt-0 header-title text-center">Enter New Disruption Record</h4>
+							</div>
 	            			<div class="card-body">
-	            				<h4 class="mt-0 header-title text-center">Enter New Disruption Record</h4>
 	            				<div class="row ">
 	            				{{-- Fields --}}
 		            				<div class="col-lg-6">
@@ -47,23 +49,21 @@
 		                                <div class="form-group row">
 		                                    <label for="from" class="col-lg-2 col-form-label">From:</label>
 		                                    <div class="col-sm-10">
-		                                        <input class="form-control" type="datetime-local" 
-		                                        	name="from" id="from" required>
+												<input type='text' class="form-control" id='datetimepicker1' name="from" placeholder="Departure Date / Time" />
 		                                    </div>
 		                                </div>
 
 		                                <div class="form-group row">
 		                                    <label for="to" class="col-lg-2 col-form-label">To:</label>
 		                                    <div class="col-sm-10">
-		                                        <input class="form-control" type="datetime-local" 
-		                                        	name="to" id="to" required>
+												<input type='text' class="form-control" id='datetimepicker2' name="to" placeholder="Arrival Date / Time"/>	
 		                                    </div>
 		                                </div>
 
 		                                <div class="form-group row">
 		                                    <label for="description" class="col-lg-2 col-form-label">Description:</label>
 		                                    <div class="col-sm-10">
-		                                    	<textarea id="description" class="form-control" maxlength="225" rows="3" name="description" placeholder="This textarea has a limit of 225 chars."></textarea>
+		                                    	<textarea id="description" class="form-control" maxlength="225" rows="3" name="description" placeholder="This textarea has a limit of 225 chars." style="resize: none;"></textarea>
 		                                    </div>
 		                                </div>
 
@@ -91,7 +91,7 @@
 		                                    </div>
 		                                </div>
 
-		                                <button class="btn btn-outline-primary" type="submit">Save Record</button>
+		                                <button class="btn btn-outline-primary" type="submit" name="save">Save Record</button>
 		            				</div>
 
 		            			{{-- MAP --}}

@@ -25,6 +25,7 @@
 					<script	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI&callback=initMap&libraries=&v=weekly" async>
 					</script>
             	</div>
+
             	<div class="col-lg-12 my-3">
             		<div class="table-responsive-sm">
                 		<table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -52,15 +53,20 @@
                 					<td>{{ $map->description }}</td>
                 					<td>{{ $map->latitude }}</td>
                 					<td>{{ $map->longitude }}</td>
-                                    <td class="clearfix">
-                                        <form action="/edit/{{ $map->id }}" class="float-left p-1">                                        
-                                            <button class="btn btn-warning btn-sm" onclick="edit()"><i class="far fa-edit"></i></button>
-                                        </form>
-                                        <form action="/delete/{{ $map->id }}" method="POST" class="float-right p-1">
-                                            @csrf
-                                            <button class="btn btn-danger btn-sm" type="submit"><i class="far fa-trash-alt"></i></button>
-                                        </form>
-                                        <a class="btn btn-primary" href="/marker/{{$map->id}}"><i class="far fa-eye"></i></a>
+                                    <td class="d-flex justify-content-between align-items-center">
+										<a class="btn btn-primary btn-sm" href="{{url('/marker/'.$map->id)}}">
+											<i class="far fa-eye"></i>
+										</a>
+										@if(Auth::user()->roles->first()->name == 'user')
+											<a href="{{url('/edit/'.$map->id)}}" class="btn btn-warning btn-sm">
+												<i class="far fa-edit"></i>
+											</a>
+		  								
+											<form action="/delete/{{ $map->id }}" method="POST">
+												@csrf
+												<button class="btn btn-danger btn-sm" type="submit"><i class="far fa-trash-alt"></i></button>
+											</form>
+										@endif
                                     </td>
                                     <span class="cord" data-latitude="{{ $map->latitude }}" data-longitude="{{ $map->longitude }}"></span>
                 				</tr>

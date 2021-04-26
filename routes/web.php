@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome'); });
+Route::get('/about', function () { return view('about'); });
+Route::get('/contact', function () { return view('contact'); });
 
 	Route::get('/index',[App\Http\Controllers\MapsController::class, 'index']);
 	Route::get('/edit/{maps}',[App\Http\Controllers\MapsController::class, 'edit']);

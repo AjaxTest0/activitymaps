@@ -39,17 +39,14 @@
 		                                <div class="form-group row">
 		                                    <label for="from" class="col-sm-2 col-form-label">From:</label>
 		                                    <div class="col-sm-10">
-		                                        <input class="form-control" type="datetime-local" 
-		                                        	name="from" id="from" value="{{ $map->to }}">
+												<input type='text' class="form-control" id='datetimepicker1' name="from" value="{{  $map->from  }}" placeholder='{{$map->from}}' /> 
 		                                    </div>
 		                                </div>
 
 		                                <div class="form-group row"> 
 		                                	<label for="to" class="col-sm-2 col-form-label">To:</label>
 		                                	<div class="col-sm-10"> 
-		                                		<input class="form-control" type="datetime-local"  name="to" id="to" 
-		                                			value="{{  $map->to  }}" 
-		                                			placeholder='$map->to'>
+												<input type='text' class="form-control" id='datetimepicker2' name="to" value="{{  $map->to  }}" placeholder='{{$map->to}}' /> 
 		                                	</div> 
 		                                </div>
 

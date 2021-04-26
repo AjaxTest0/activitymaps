@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Bitfumes\Multiauth\Model\Admin;
+use Bitfumes\Multiauth\Model\Role;
 
 class RegisterController extends Controller
 {
@@ -64,10 +66,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $admin = Admin::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'active' => 1,
         ]);
+
+        $admin->roles()->sync(2);
+        return $admin;
     }
 }

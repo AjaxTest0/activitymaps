@@ -3,9 +3,9 @@
 @section('content')
 <style type="text/css">
 .first {
-  background-image: url("assets\\images\\background\\vector-world-map.jpg");
-  height: 100%;
-
+  background-image: url("assets\\images\\background\\map_7.jpg");
+  background-position:center center;
+  background-repeat:no-repeat;
 }
 /* Set the size of the div element that contains the map */
 #map {
@@ -17,62 +17,17 @@
 </style>
 <div class="container-fluid">
     <div>
-      <div class="row first clearfix">
+      <div class="row first clearfix p-5" style="height: 900px">
         <div class="col-lg-7 col-md-1 float-left"></div>
           @auth
-            <div class="col-lg-4 col-md-10 float-right">
-                <div class="m-5 p-5 display-4 text-white">
+          <div class="col-lg-5  col-md-10 float-right">
+                <div class="m-5 display-3 text-white">
                   <b style="color: #4a494a">Welcome</b> To <i style="color: #46b4e3" class="pl-5">Activity Maps</i>
                 </div>
-            </div>
+          </div>
           @endauth
-          @guest
-            <div class="col-lg-4 col-sm-10 float-right">
-                <div class="card my-5">
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
- 
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+          @guest  
+            @include('includes.login_include')
           @endguest  
       </div>
       <div class="row text-justify text-white">
@@ -87,9 +42,6 @@
       </div>
       <div class="row">
         <div id="map"></div>
-          <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-              {{-- <div id="map"></div> --}}
-              <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
               <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI&callback=initMap&libraries=&v=weekly"
                 async>
         </script>
@@ -115,6 +67,5 @@
             });
           }
       </script>
-@include('layouts.footer')
 @endsection
 
