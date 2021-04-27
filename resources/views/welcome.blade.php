@@ -34,12 +34,16 @@
 <div></div>
       <div class="row text-justify text-white">
           <div class="col-lg-6 p-4 px-5" style="background-color: #46b4e3">
+            <p class="px-5">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
           </div>
           <div class="col-lg-6 p-4 px-5" style="background-color: #0e2532">
+            <p class="px-5">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
            </div>
       </div>
       <div class="row">
@@ -50,44 +54,8 @@
       </div>
     </div>
 </div>
-
-
-        <script src="assets/plugins/gmaps/gmaps.min.js"></script>
-        <!-- demo codes -->
-        <script src="assets/pages/gmaps.js"></script>
-
-        <script>
-          $.ajax({
-            type: 'GET', //THIS NEEDS TO BE GET
-            url: '/index',
-            success: function (maps) {
-                console.log(maps);
-            },
-            error: function() { 
-                 console.log(maps);
-            }
-        });
-          // Initialize and add the map
-          function initMap() {
-            // The location of Uluru
-            let uluru;
-            uluru = { lat: -25.344, lng: 131.036 };
-
-            // The map, centered at Uluru
-            const map = new google.maps.Map(document.getElementById("map"), {
-              zoom: 5,
-              center: uluru,
-            });
-
-            addMarker(uluru);
-                            //add marker function
-            function addMarker(coords){
-                    var marker = new google.maps.Marker({
-                        position:coords,
-                        map:map,
-                    });
-                };
-          }
-      </script>
+  <script src="assets/plugins/gmaps/gmaps.min.js"></script>
+  <script src="assets/pages/gmaps.js"></script>
+  <script src="{{asset('assets/js/pages/mapwelcome.js')}}"></script>
 @endsection
 

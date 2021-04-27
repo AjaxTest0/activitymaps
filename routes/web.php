@@ -19,6 +19,7 @@ Route::get('/about', function () { return view('about'); });
 Route::get('/contact', function () { return view('contact'); });
 
 	Route::get('/index',[App\Http\Controllers\MapsController::class, 'index']);
+	Route::get('/ajaxmap',[App\Http\Controllers\MapsController::class, 'ajaxmap']);
 	Route::get('/edit/{maps}',[App\Http\Controllers\MapsController::class, 'edit']);
 	Route::get('/marker/{maps}',[App\Http\Controllers\MapsController::class, 'show']);
 	Route::post('/store',[App\Http\Controllers\MapsController::class, 'store']);

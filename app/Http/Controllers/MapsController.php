@@ -132,4 +132,11 @@ class MapsController extends Controller
         return back()->with(['status' => $status]); 
 
     }
+    // ajax call jason responses
+    public function ajaxmap()
+   {
+       # code...
+       $maps = Maps::get();
+       return response()->json($maps, 200);
+   }
 }
