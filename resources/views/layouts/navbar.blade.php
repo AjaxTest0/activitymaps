@@ -1,4 +1,4 @@
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #4a494a">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm cc-bg-gray">
             <div class="container text-white">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('assets/icon/logow.png') }}" height="100%" width="100%">
@@ -47,23 +47,25 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link font-weight-bold mx-1" style="color: #46b4e3" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link font-weight-bold mx-1 cc-blue" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
                             
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link font-weight-bold mx-1" style="color: #46b4e3" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link font-weight-bold mx-1 cc-blue" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                            <li class="nav-item dropdown cc-blue">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white cc-blue" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                   <span class="cc-blue">
+                                   {{ Auth::user()->name }}
+                                   </span> 
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                <div class="dropdown-menu dropdown-menu-right cc-bg-gray" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item cc-blue" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

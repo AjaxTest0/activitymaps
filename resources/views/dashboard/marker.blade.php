@@ -8,7 +8,6 @@
         width: 100%;
       }
     </style>
-
 	<div class="page-content-wrapper">
 		<div class="container mt-4">
 			@if (session('status'))
@@ -67,42 +66,31 @@
 	  					<div class="col">
 							<div id="map"></div>
 							<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-							<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI&callback=initMap&libraries=&v=weekly" async></script>
-						</div>
-
-	  					
-
-							
+							<script src="https://maps.googleapis.com/maps/api/js?key={{ trim(\DB::table('apis')->pluck('api'), '[""]') }}&callback=initMap&libraries=&v=weekly" async></script>
+						</div>	
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-    <!-- <script src="assets/plugins/gmaps/gmaps.min.js"></script> -->
-        
-	<!-- demo codes -->
-    <!-- <script src="assets/pages/gmaps.js"></script> -->
-
     <script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of Uluru
+        let uluru;
+        uluru = { lat: <?php echo $maps->latitude ?>, lng: <?php echo $maps->longitude ?> };
 
-		      // Initialize and add the map
-		      function initMap() {
-		        // The location of Uluru
-		        let uluru;
-		        uluru = { lat: <?php echo $maps->latitude ?>, lng: <?php echo $maps->longitude ?> };
-
-		        // The map, centered at Uluru
-		        const map = new google.maps.Map(document.getElementById("map"), {
-		          zoom: 4,
-		          center: uluru,
-		        });
-		        // The marker, positioned at Uluru
-		        const marker = new google.maps.Marker({
-		          position: uluru,
-		          map: map,
-		        });
-		      }
-   		</script>
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 4,
+          center: uluru,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });
+      }
+   	</script>
 
 @endsection

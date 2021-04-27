@@ -73,8 +73,9 @@ class MapsController extends Controller
      */
     public function show(Maps $maps)
     {
-        // dd($maps);
-       return view('dashboard.marker')->with('maps',$maps);
+        $api = \DB::table('users')->where('id', '1')->first();
+        session(['key' => $api]);
+        return view('dashboard.marker')->with('maps',$maps)->with('api',$api);
     }
 
     /**

@@ -2,9 +2,9 @@
 
 @section('content')
 	<div class="container" style="width: 50rem;">
-		<div class="card m-5 p-5 shadow" style="background-color: #46b4e3">
+		<div class="card m-5 p-5 shadow cc-bg-blue">
 			<div class="card shadow">
-				<div class="display-4 text-center p-3" style="color: #46b4e3">Contact Us</div>
+				<div class="display-4 text-center p-3 cc-blue">Contact Us</div>
 				    <div class="form-group row p-3">
 			            <label for="name" class="col-lg-2 col-form-label m-0"><b>Name:</b></label>
 		                <div class="col-sm-10">
