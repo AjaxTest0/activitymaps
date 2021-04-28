@@ -28,7 +28,7 @@
 										<a class="btn btn-primary btn-sm" href="{{url('/marker/'.$map->id)}}">
 											<i class="far fa-eye"></i>
 										</a>
-										@if(Auth::user()->roles->first()->name == 'user')
+										@if(Auth::user()->roles->first()->name == 'super' )
 											<a href="{{url('/edit/'.$map->id)}}" class="btn btn-warning btn-sm">
 												<i class="far fa-edit"></i>
 											</a>

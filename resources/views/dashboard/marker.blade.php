@@ -21,7 +21,7 @@
 	  				<h4 class="card-title text-primary">
 					  <i class="fas fa-map-marker-alt mr-2"></i> {{ $maps->type }}
 					</h4>
-					@if(Auth::user()->roles->first()->name == 'user')
+					@if(Auth::user()->roles->first()->name == 'super')
 						<a href="{{url('/home')}}" class="text-decoration-none">
 							<i class="fas fa-plus"></i>	Add New
 						</a>

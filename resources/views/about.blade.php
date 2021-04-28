@@ -2,7 +2,7 @@
 
 @section('content')
 
-		<div class="container-fluid">
+		<div class="container">
 			<div class="text-justify">
 				<h1>What is Lorem Ipsum?</h1>
 				<p>

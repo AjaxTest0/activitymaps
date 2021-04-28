@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <script src="{{asset('assets/js/pages/mapIndex.js')}}"></script>
     <style type="text/css">
       /* Set the size of the div element that contains the map */
 	    #map {
@@ -34,7 +35,7 @@
         </div>
     </div> 
 
-    <script src="{{asset('assets/js/pages/mapIndex.js')}}"></script>
+    
     <script type="text/javascript">
         $(document).ready(function() {
             $('#example').DataTable();

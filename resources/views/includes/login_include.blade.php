@@ -38,11 +38,11 @@
                                 <button type="submit" class="btn col-12 text-white" style="background-color:  #46b4e3">
                                     {{ __('Login') }}
                                 </button>
-                              @if (Route::has('password.request'))
+{{--                               @if (Route::has('password.request'))
                                 <a class="btn btn-link text-muted col-12" href="{{ route('password.request') }}">
                                   <u>  {{ __('Lost Your Password?') }} </u>
                                 </a>
-                              @endif
+                              @endif --}}
                             </div>
                         </div>
 

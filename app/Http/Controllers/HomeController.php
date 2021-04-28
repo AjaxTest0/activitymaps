@@ -24,11 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->roles->first()->name != 'user'){
-            return redirect('/index')->with('status', 'Access Denied!');
 
-        }
-
-        return view('dashboard.create');
+        return view('welcome');
     }
 }

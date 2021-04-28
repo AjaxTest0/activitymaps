@@ -6,6 +6,7 @@
   background-image: url("assets\\images\\background\\background.png");
   background-position:center center;
   background-repeat:no-repeat;
+  height: 600px;
 }
 #map {
   height: 500px;
@@ -14,11 +15,11 @@
 </style>
 <div class="container-fluid">
     <div>
-      <div class="row first clearfix p-3">
+      <div class="row first p-3">
           @auth
-          <div class="col-lg-5  col-md-10 float-right">
-                <div class="m-5 display-3 text-white">
-                  <b class="cc-gray" >Welcome</b> To <i class="pl-5 cc-blue">Activity Maps</i>
+          <div class="text-center align-content-center mt-5 pt-5">
+                <div class="m-5 pt-5 display-3 cc-darkblue font-weight-bold">
+                  Welcome
                 </div>
           </div>
           @endauth

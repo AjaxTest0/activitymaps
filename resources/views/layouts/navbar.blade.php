@@ -18,7 +18,7 @@
 
                     <ul class="navbar-nav">
                         @if(Illuminate\Support\Facades\Auth::check())
-                            @if(Auth::user()->roles->first()->name == 'user')
+                            @if(Auth::user()->roles->first()->name == 'super')
                                 <li class="nav-item ">
                                     <a class="nav-link text-white font-weight-bold" href="/home">New Map Record</a>
                                 </li>
@@ -41,19 +41,19 @@
                             <a class="nav-link text-white font-weight-bold mx-2" href="/about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white font-weight-bold ml-2 mr-3" href="/contact">Contact</a>
+                            <a class="nav-link text-white font-weight-bold ml-2 mr-5" href="/contact">Contact</a>
                         </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link font-weight-bold mx-1 cc-blue" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link font-weight-bold mx-1 text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
                             
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link font-weight-bold mx-1 cc-blue" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link font-weight-bold mx-1 text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
