@@ -1,7 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <script src="{{asset('assets/js/pages/mapIndex.js')}}"></script>
+    <script type="text/javascript">
+        function initMap() {
+            uluru = { lat: -24.90387784417046, lng: 133.9211859007968 };
+                 // The map, centered at Sydney,Australian
+                var map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 4,
+                    center: uluru,
+                });
+        }
+    </script>
     <style type="text/css">
       /* Set the size of the div element that contains the map */
 	    #map {
@@ -36,6 +45,7 @@
     </div> 
 
     
+    <script src="{{asset('assets/js/pages/mapIndex.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#example').DataTable();

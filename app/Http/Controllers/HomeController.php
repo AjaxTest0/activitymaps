@@ -24,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->roles->first()->name == 'super'){
+            return view('dashboard.create');
+        }
 
         return view('welcome');
     }

@@ -9,16 +9,16 @@
 					<div class="display-4 text-center p-3 cc-blue">Contact Us</div>
 						<div class="col-12">
 						    <div class="form-group row">
-					            <label for="name" class="col-lg-2 col-form-label m-0"><b>Name:</b></label>
-				                <div class="col-sm-10">
+					            <label for="name" class="col-lg-3 col-form-label m-0"><b>Name:</b></label>
+				                <div class="col-sm-9">
 				                    <input class="form-control" type="text" placeholder="Enter Name" 
 				                        name="name" id="name" value="" required>
 				                </div>
 					    	</div>
 
 					    	<div class="form-group row">
-					            <label for="email" class="col-lg-2 col-form-label m-0"><b>Email:</b></label>
-				                <div class="col-sm-10">
+					            <label for="email" class="col-lg-3 col-form-label m-0"><b>Email:</b></label>
+				                <div class="col-sm-9">
 				                    <input class="form-control" type="text" placeholder="Enter Email" 
 				                        name="email" id="email" value="" required>
 				                </div>
@@ -26,9 +26,9 @@
 
 
 					    	<div class="form-group row">
-					            <label for="reason" class="col-lg-2 col-form-label m-0"><b>Reason:</b></label>
-				                <div class="col-sm-10">
-				                    <textarea class="form-control" type="text" placeholder="Enter Type" 
+					            <label for="reason" class="col-lg-3 col-form-label m-0"><b>Message:</b></label>
+				                <div class="col-sm-9">
+				                    <textarea class="form-control" type="text" placeholder="Enter Message" 
 				                        name="reason" id="reason" value="" required></textarea> 
 				                </div>
 					    	</div>
