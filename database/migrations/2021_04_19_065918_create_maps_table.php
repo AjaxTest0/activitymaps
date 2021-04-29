@@ -23,7 +23,7 @@ class CreateMapsTable extends Migration
             $table->decimal('latitude', 8,7);
             $table->decimal('longitude', 8,7);
             $table->string('color');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('admin_id')->constrained('admins');
             $table->timestamps();
         });
     }

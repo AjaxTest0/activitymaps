@@ -11,11 +11,6 @@
 
 	<div class="page-content-wrapper">
 		<div class="container-fluid">
-			@if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
 
             <form action="/store" method="post">
             	@csrf
@@ -49,14 +44,14 @@
 		                                <div class="form-group row">
 		                                    <label for="from" class="col-lg-2 col-form-label">From:</label>
 		                                    <div class="col-sm-10">
-												<input type='text' class="form-control" id='datetimepicker1' name="from" placeholder="Departure Date / Time" />
+												<input type='dateTime-local' class="form-control" {{-- id='datetimepicker1' --}} name="from" placeholder="Departure Date / Time" />
 		                                    </div>
 		                                </div>
 
 		                                <div class="form-group row">
 		                                    <label for="to" class="col-lg-2 col-form-label">To:</label>
 		                                    <div class="col-sm-10">
-												<input type='text' class="form-control" id='datetimepicker2' name="to" placeholder="Arrival Date / Time"/>	
+												<input type='dateTime-local' class="form-control" {{-- id='datetimepicker2' --}} name="to" placeholder="Arrival Date / Time"/>	
 		                                    </div>
 		                                </div>
 
@@ -116,7 +111,6 @@
 </div>
 
         <script src="assets/plugins/gmaps/gmaps.min.js"></script>
-        <!-- demo codes -->
         <script src="assets/pages/gmaps.js"></script>
         <script src="{{asset('assets/js/pages/mapcreate.js')}}"></script>
 

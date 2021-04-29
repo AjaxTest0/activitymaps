@@ -40,7 +40,7 @@ class MapsController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::user()->roles->first()->name != 'user'){
+        if(Auth::user()->roles->first()->name == 'user'){
             return redirect('/index')->with('status', 'Access Denied!');
 
         }
@@ -54,14 +54,14 @@ class MapsController extends Controller
              'latitude' => $request->latitude,
              'longitude' => $request->longitude,
              'color' => $request->color,
-             'user_id' => auth()->user()->id,
+             'admin_id' => auth()->user()->id,
         ];
 
         Maps::create($data);
 
 
         $status = 'Map uploaded';
-        return back()->with(['status' => $status]);
+        return back()->with(['uploaded' => $status]);
 
     }
 
@@ -86,7 +86,7 @@ class MapsController extends Controller
      */
     public function edit(Maps $maps)
     {
-        if(Auth::user()->roles->first()->name != 'user'){
+        if(Auth::user()->roles->first()->name == 'user'){
             return redirect('/index')->with('status', 'Access Denied!');
 
         }
@@ -103,7 +103,7 @@ class MapsController extends Controller
      */
     public function update(Request $request, Maps $maps)
     {
-        if(Auth::user()->roles->first()->name != 'user'){
+        if(Auth::user()->roles->first()->name == 'user'){
             return redirect('/index')->with('status', 'Access Denied!');
 
         }
@@ -111,7 +111,8 @@ class MapsController extends Controller
         $input = $request->all();
         // dd($input);
         $maps->update($input);
-        return redirect('/index');
+        $status = 'Map Updated';
+        return redirect('/index')->with('uploaded',$status);
         
     }
 
@@ -123,7 +124,7 @@ class MapsController extends Controller
      */
     public function destroy(Maps $maps)
     {
-        if(Auth::user()->roles->first()->name != 'user'){
+        if(Auth::user()->roles->first()->name == 'user'){
             return redirect('/index')->with('status', 'Access Denied!');
 
         }

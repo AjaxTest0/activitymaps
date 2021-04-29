@@ -16,8 +16,9 @@
             success: function (maps) {
                 for (let i = 0; i < maps.length; ++i) {
                   let uluru = { 
-                    lat: maps[i]['latitude'],
-                     lng: maps[i]['longitude'] };
+                    lat: Number(maps[i]['latitude']),
+                    lng: Number(maps[i]['longitude'])
+                  };
                   addMarker(uluru);
                 }
             },

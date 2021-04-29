@@ -4,11 +4,6 @@
 
 	<div class="page-content-wrapper ">
 		<div class="container">
-			@if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
             <form action="/update/{{ $map->id }}" method="post">
             	@csrf
 	            <div class="row m-5 p-5">
@@ -39,14 +34,14 @@
 		                                <div class="form-group row">
 		                                    <label for="from" class="col-sm-2 col-form-label">From:</label>
 		                                    <div class="col-sm-10">
-												<input type='text' class="form-control" id='datetimepicker1' name="from" value="{{  $map->from  }}" placeholder='{{$map->from}}' /> 
+												<input type='dateTime' class="form-control" {{-- id='datetimepicker1' --}} name="from" value="{{\Carbon\Carbon::parse($map->from)->format('Y/m/d h:i:s')  }}" placeholder='{{$map->from}}' /> 
 		                                    </div>
 		                                </div>
 
 		                                <div class="form-group row"> 
 		                                	<label for="to" class="col-sm-2 col-form-label">To:</label>
 		                                	<div class="col-sm-10"> 
-												<input type='text' class="form-control" id='datetimepicker2' name="to" value="{{  $map->to  }}" placeholder='{{$map->to}}' /> 
+												<input type='dateTime' class="form-control" {{-- id='datetimepicker2' --}} name="to" value="{{\Carbon\Carbon::parse($map->to)->format('Y/m/d h:i:s')  }}" placeholder='{{$map->to}}' />
 		                                	</div> 
 		                                </div>
 
@@ -93,6 +88,10 @@
 		</div>
     </div>
 </div>
+
+<script type="text/javascript">
+	console.log($(`#datetimepicker1`).val());
+</script>
 
 @endsection
 

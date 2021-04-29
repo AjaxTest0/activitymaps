@@ -1,16 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <script type="text/javascript">
-        function initMap() {
-            uluru = { lat: -24.90387784417046, lng: 133.9211859007968 };
-                 // The map, centered at Sydney,Australian
-                var map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 4,
-                    center: uluru,
-                });
-        }
-    </script>
+    <script src="{{ asset('assets/plugins/gmaps/gmaps.min.js') }}"></script>
+    <script src="{{ asset('assets/pages/gmaps.js') }}"></script>
+    
     <style type="text/css">
       /* Set the size of the div element that contains the map */
 	    #map {
@@ -23,11 +16,6 @@
     <script type="text/javascript"> let locations</script>
 	<div class="page-content-wrapper">
 		<div class="container-fluid">
-			@if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
 
             <div class="row">
             	<div class="col-lg-12 my-3">
@@ -44,7 +32,6 @@
         </div>
     </div> 
 
-    
     <script src="{{asset('assets/js/pages/mapIndex.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function() {

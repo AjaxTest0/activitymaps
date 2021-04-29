@@ -10,8 +10,8 @@
 		        // The location of Uluru
 		        let uluru;
 		        uluru = { lat: -25.344, lng: 131.036 };
-		        var longitude = Number($('#longitude').val(),10);
 		        var latitude =  Number($('#latitude').val(),10);
+		        var longitude = Number($('#longitude').val(),10);
 		        if(longitude != 0 || !latitude != 0 ){
 		        	uluru = { 
 		        		lat: latitude, 

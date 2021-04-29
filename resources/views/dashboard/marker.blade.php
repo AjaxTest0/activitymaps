@@ -1,6 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
+	<script src="{{ asset('assets/plugins/gmaps/gmaps.min.js') }}"></script>
+    <script src="{{ asset('assets/pages/gmaps.js') }}"></script>
+    <script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of Uluru
+        let uluru;
+        uluru = { lat: Number(<?php echo $maps->latitude ?>), lng: Number(<?php echo $maps->longitude ?>) };
+        // alert(typeof uluru['lat']);
+        // alert(typeof uluru['lng']);
+        // debugger;
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: Number(<?php echo $maps->latitude ?>), lng: Number(<?php echo $maps->longitude ?>) },
+          zoom: 4,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });
+      }
+   	</script>
     <style type="text/css">
       /* Set the size of the div element that contains the map */
       #map {
@@ -10,11 +33,6 @@
     </style>
 	<div class="page-content-wrapper">
 		<div class="container mt-4">
-			@if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
 
 			<div class="card">
 	  			<div class="card-header d-flex justify-content-between align-items-center">
@@ -73,24 +91,6 @@
 			</div>
 		</div>
 	</div>
-    <script>
-      // Initialize and add the map
-      function initMap() {
-        // The location of Uluru
-        let uluru;
-        uluru = { lat: <?php echo $maps->latitude ?>, lng: <?php echo $maps->longitude ?> };
-
-        // The map, centered at Uluru
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 4,
-          center: uluru,
-        });
-        // The marker, positioned at Uluru
-        const marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-        });
-      }
-   	</script>
+	
 
 @endsection

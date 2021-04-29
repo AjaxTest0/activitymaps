@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Auth;
+use Bitfumes\Multiauth\Model\Admin;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {

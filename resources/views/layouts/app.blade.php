@@ -53,10 +53,24 @@
 
     {{-- custom CSS --}}
     <link rel="stylesheet" href="{{ asset('assets/css/pages.css') }}">
+
+    {{-- map load --}}
+    <script src="{{asset('assets/js/pages/mapload.js')}}"></script>
+    
 </head>
 <body>
     <div id="app">
         @include('layouts/navbar')
+
+        @if (session('status'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('status') }}
+            </div>
+        @elseif(session('uploaded'))
+            <div class="alert alert-success" role="alert">
+                {{ session('uploaded') }}
+            </div>
+        @endif
 
         <main>
             @yield('content')
