@@ -98,6 +98,9 @@
 										      src="https://maps.googleapis.com/maps/api/js?key={{ trim(\DB::table('apis')->pluck('api'), '[""]') }}&callback=initMap&libraries=&v=weekly"
 										      async>
 											</script>
+											<script src="assets/plugins/gmaps/gmaps.min.js"></script>
+        									<script src="assets/pages/gmaps.js"></script>
+        									<script src="{{asset('assets/js/pages/mapcreate.js')}}"></script>
 		            				</div>
 
 	            				</div>{{-- Row --}}
@@ -110,8 +113,6 @@
     </div>
 </div>
 
-        <script src="assets/plugins/gmaps/gmaps.min.js"></script>
-        <script src="assets/pages/gmaps.js"></script>
-        <script src="{{asset('assets/js/pages/mapcreate.js')}}"></script>
+        
 
 @endsection

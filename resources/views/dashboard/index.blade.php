@@ -23,6 +23,7 @@
 					<div id="map"></div>
 					<script	src="https://maps.googleapis.com/maps/api/js?key={{ trim(\DB::table('apis')->pluck('api'), '[""]') }}&callback=initMap&libraries=&v=weekly" async>
 					</script>
+                    <script src="{{asset('assets/js/pages/mapwelcome.js')}}"></script>
             	</div>
 
             	<div class="col-lg-12 my-3">
@@ -32,7 +33,6 @@
         </div>
     </div> 
 
-    <script src="{{asset('assets/js/pages/mapIndex.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#example').DataTable();
