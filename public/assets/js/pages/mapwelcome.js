@@ -19,7 +19,7 @@
                     lat: Number(maps[i]['latitude']),
                     lng: Number(maps[i]['longitude'])
                   };
-                  addMarker(uluru);
+                  addMarker(uluru,maps,i);
                 }
             },
             error: function() { 
@@ -27,10 +27,27 @@
             }
         });
 
-            function addMarker(coords){
-                    var marker = new google.maps.Marker({
-                        position:coords,
-                        map:map,
+            function addMarker(coords,maps,i){
+                    const marker = new google.maps.Marker({
+                      position:coords,
+                      map:map,
                     });
+                    attachSecretMessage(marker, maps,i);
                 };
+            // Attaches an info window to a marker with the provided message. When the
+            // marker is clicked, the info window will open with the secret message.
+            function attachSecretMessage(marker, Maps, i) {
+              contentmsg = `
+              <div><b class="font-weight-bold">Type:</b> ${Maps[i]['type']} </div>
+              <div><b class="font-weight-bold">Proponent:</b> ${Maps[i]['proponent']} </div>
+              <div><b class="font-weight-bold">Location:</b> ${Maps[i]['latitude']},${Maps[i]['longitude']} </div>
+              <div><b class="font-weight-bold">Time:</b> From :${Maps[i]['from']},To: ${Maps[i]['to']} </div>
+              `
+              const infowindow = new google.maps.InfoWindow({
+                content: contentmsg,
+              });
+              marker.addListener("click", () => {
+                infowindow.open(marker.get("map"), marker);
+              });
+            }
           }

@@ -1,4 +1,4 @@
-        <div class="col-lg-6 col-md-10 float-right">
+        <div class="col-lg-6 col-md-12 float-right">
           <div class="card m-5 px-5 pt-5 pb-4" style="background-color:  #46b4e3">
             <div class="card">
               <h2 class="text-center text-muted m-2">Login</h2>

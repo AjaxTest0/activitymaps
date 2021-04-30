@@ -76,8 +76,11 @@
 		                                        <input class="form-control" type="color" value="{{ $map->color }}" id="example-color-input" name="color" required>
 		                                    </div>
 		                                </div>
-
-		                                <button class="btn btn-outline-primary" type="submit">Update Record</button>
+		                                <div class="clearfix">
+		                                	
+		                                </div>
+		                                <button class="btn btn-outline-primary float-left" type="submit" name="action" value="submit">Update Record</button>
+		                                <button class="btn btn-warning float-right" type="submit" name="action" value="dublicate">Dublicate Record</button>
 		            				</div>
 	            				</div>{{-- Row --}}
 	            			</div> {{-- Card Body END --}}

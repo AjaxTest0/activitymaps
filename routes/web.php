@@ -19,7 +19,7 @@ Route::get('/about', function () { return view('about'); });
 Route::get('/contact', function () { return view('contact'); });
 Route::post('/contactus',[App\Http\Controllers\ContactUsController::class, 'store']);
 
-
+	Route::post('/maps/export/', [App\Http\Controllers\MapsController::class, 'export']);
 	Route::get('/index',[App\Http\Controllers\MapsController::class, 'index'])->middleware('verified');
 	Route::get('/ajaxmap',[App\Http\Controllers\MapsController::class, 'ajaxmap']);
 	Route::get('/edit/{maps}',[App\Http\Controllers\MapsController::class, 'edit'])->middleware('verified');

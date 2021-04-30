@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Maps;
-use Illuminate\Http\Request;
-use Bitfumes\Multiauth\Model\Admin;
 use Auth;
+use App\Models\Maps;
+use Bitfumes\Multiauth\Model\Admin;
+use Illuminate\Http\Request;
+use App\Exports\MapsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 
 class MapsController extends Controller
 {
@@ -13,8 +17,16 @@ class MapsController extends Controller
     // {
         // $this->middleware('auth:admin');
         // $this->middleware('role:user')->only('index');
+        //  $users = Users::where('years', '>', 20):
+        //  return Excel::download( new UsersExport($users), 'users.xls');
     // }
 
+    public function export(Request $request) 
+    {   
+        // $map = Maps::where('from','>',$request->from)
+        //             ->where('to', '<', $request->to)->get();
+        return Excel::download(new MapsExport, 'maps.xlsx');
+    }
     
     public function index()
     {
@@ -57,11 +69,15 @@ class MapsController extends Controller
              'admin_id' => auth()->user()->id,
         ];
 
-        Maps::create($data);
-
-
-        $status = 'Map uploaded';
-        return back()->with(['uploaded' => $status]);
+        $test = Maps::firstOrCreate($data);
+        if($test->wasRecentlyCreated){
+            $maps = Maps::get();
+            $status = 'Dublicated Successfully';
+            return view('/dashboard/index')->with('maps',$maps)->with(['uploaded' => $status]);
+        }else{
+            $status = 'No Chnage Was Done';
+            return back()->with(['uploaded' => $status]);
+        }
 
     }
 
@@ -105,11 +121,13 @@ class MapsController extends Controller
     {
         if(Auth::user()->roles->first()->name == 'user'){
             return redirect('/index')->with('status', 'Access Denied!');
-
+        }
+        if($request->input('action') == 'dublicate'){
+           return $this->store($request);
         }
 
-        $input = $request->all();
-        // dd($input);
+        $input = $request->except(['action']);
+
         $maps->update($input);
         $status = 'Map Updated';
         return redirect('/index')->with('uploaded',$status);
