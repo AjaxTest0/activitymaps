@@ -71,9 +71,8 @@ class MapsController extends Controller
 
         $test = Maps::firstOrCreate($data);
         if($test->wasRecentlyCreated){
-            $maps = Maps::get();
-            $status = 'Dublicated Successfully';
-            return view('/dashboard/index')->with('maps',$maps)->with(['uploaded' => $status]);
+            $status = 'Map Dublicated';
+            return redirect('/index')->with('uploaded',$status);
         }else{
             $status = 'No Chnage Was Done';
             return back()->with(['uploaded' => $status]);
@@ -155,7 +154,6 @@ class MapsController extends Controller
     // ajax call jason responses
     public function ajaxmap()
    {
-       # code...
        $maps = Maps::get();
        return response()->json($maps, 200);
    }

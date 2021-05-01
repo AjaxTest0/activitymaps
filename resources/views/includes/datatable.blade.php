@@ -40,6 +40,7 @@
 										@endif
                                     </td>
                                     <span class="cord" data-latitude="{{ $map->latitude }}" data-longitude="{{ $map->longitude }}"></span>
+                                    <span class="date" data-from="{{ $map->from }}" data-to="{{ $map->to }}"></span>
                 				</tr>
     							@endforeach
                 			</tbody>
