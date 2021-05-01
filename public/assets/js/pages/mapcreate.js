@@ -1,3 +1,4 @@
+			let marker;
         	$(document).on('keyup',function(e){
         		let id = $(e.target).attr("id")
         		if(id == 'longitude' || id == 'latitude'){
@@ -24,8 +25,23 @@
 		          zoom: 4,
 		          center: uluru,
 		        });
+		        map.addListener("click", (e) => {
+				    placeMarkerAndPanTo(e.latLng, map);
+				  });
+		        
+		        function placeMarkerAndPanTo(latLng, map) {
+		        marker.setMap(null);
+				 marker = new google.maps.Marker({
+				    position: latLng,
+				    map: map,
+				  });
+				  map.panTo(latLng);
+				  console.log(latLng);
+				  $('#latitude').val(latLng['lat'])
+				  $('#longitude').val( latLng['lng'])
+				}
 		        // The marker, positioned at Uluru
-		        const marker = new google.maps.Marker({
+		        marker = new google.maps.Marker({
 		          position: uluru,
 		          map: map,
 		        });
