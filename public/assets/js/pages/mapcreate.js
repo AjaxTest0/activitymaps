@@ -29,7 +29,7 @@
 				  });
 		        
 		        function placeMarkerAndPanTo(latLng, map) {
-			        marker.setMap(null);
+			         marker.setMap(null);
 					 marker = new google.maps.Marker({
 					    position: latLng,
 					    zoom: 6,

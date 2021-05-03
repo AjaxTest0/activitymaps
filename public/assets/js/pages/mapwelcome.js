@@ -2,9 +2,9 @@
 function initMap() {
     // The location of Uluru
     let uluru;
-    let markers =[]
+    let markers = []
+    let marker;
     uluru = { lat: -25.344, lng: 131.036 };
-
     // The map, centered at Uluru
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 4,
@@ -23,8 +23,13 @@ function initMap() {
                 };
                 addMarker(uluru, maps, i);
                 $(`#from,#to`).change(function() {
-                  if( maps[i]['from'] >= $('#from').val() || maps[i]['to'] <= $('#to').val() ){
-                    addMarker(uluru, maps, i);
+                    console.log(maps[i]['from'] >= $('#from').val());
+                    console.log(maps[i]['to'] <= $('#to').val());
+                    markers[i].setMap(null);
+                  if( maps[i]['from'] >= $('#from').val() && maps[i]['to'] <= $('#to').val() ){
+                    markers[i].setMap(null);
+                    console.log("works");
+                     addMarker(uluru, maps, i);
                     }
                 });
                 
@@ -36,10 +41,18 @@ function initMap() {
     });
 
     function addMarker(coords, maps, i) {
-        // markers.setMap(null);
-        const marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
             position: coords,
             map: map,
+            icon:{
+                path: 'M 0,0 C -2,-20 -10,-22 -10,-30 A 10,10 0 1,1 10,-30 C 10,-22 2,-20 0,0 z M -2,-30 a 2,2 0 1,1 4,0 2,2 0 1,1 -4,0',
+                fillColor: maps[i]['color'],
+                fillOpacity: 1.0,
+                strokeColor: '#000000',
+                strokeWeight: 1,
+                scale: 1,
+                anchor: new google.maps.Point(12, 24),
+            },
         });
         markers.push(marker);
         attachSecretMessage(marker, maps, i);

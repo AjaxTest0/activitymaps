@@ -13,42 +13,6 @@
    /* The width is the width of the web page */
  }
 </style>
-<style>
-  .slidecontainer {
-    width: 100%;
-  }
-
-  .slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 25px;
-    background: #0e2532;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-  }
-
-  .slider:hover {
-    opacity: 1;
-  }
-
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    background: #46b4e3;
-    cursor: pointer;
-  }
-
-  .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: #04AA6D;
-    cursor: pointer;
-  }
-</style>
 
 <script type="text/javascript"> let locations</script>
 <div class="page-content-wrapper">
@@ -63,13 +27,20 @@
        <script src="{{asset('assets/js/pages/mapwelcome.js')}}"></script>
     </div>
 
-    <div class="col-lg-12 my-3">
-        <div class="form-group col-3 border p-3">
+    <div class="col-lg-12 my-3 clearfix">
+        <div class="form-group col-3 border p-3 float-left">
           <label for="from" class="font-weight-bold">From</label> 
-              <input type="dateTime" name="from" id="from" class="form-control" value={{ $maps->sortBy("from")->first()->from }}>
+              <input type="dateTime" name="from" id="from" class="form-control" 
+                value={{ $maps->sortBy("from")->first()->from ?? date('Y-m-d H:i:s') }}>
           <label for="to" class="font-weight-bold">To</label> 
-              <input type="dateTime" name="to" id="to" class="form-control" value={{ $maps->sortByDesc("to")->first()->to }}>
+              <input type="dateTime" name="to" id="to" class="form-control" 
+                value={{ $maps->sortByDesc("to")->first()->to ?? date('Y-m-d H:i:s') }}>
         </div>
+        @if(Auth::user()->roles->first()->name == 'super')
+        <div class="float-right">
+          <a class="btn btn-outline-primary" href="{{url('maps/export/')}}">Export All Maps</a>
+        </div>
+        @endif
     </div>
 
     <div class="col-lg-12 my-3">
@@ -85,15 +56,5 @@
     $('#example').DataTable();
   } );
 </script>
-
-{{-- <script>
-var slider = $("#myRange");
-var output = $("#demo");
-output.html(slider.val());
-
-slider.oninput = function() {
-  output.html(this.val());
-}
-</script> --}}
 
 @endsection

@@ -28,16 +28,12 @@
 										<a class="btn btn-primary btn-sm" href="{{url('/marker/'.$map->id)}}">
 											<i class="far fa-eye"></i>
 										</a>
-										@if(Auth::user()->roles->first()->name == 'super' )
-											<a href="{{url('/edit/'.$map->id)}}" class="btn btn-warning btn-sm">
-												<i class="far fa-edit"></i>
-											</a>
-		  								
-											<form action="/delete/{{ $map->id }}" method="POST">
-												@csrf
-												<button class="btn btn-danger btn-sm" type="submit"><i class="far fa-trash-alt"></i></button>
-											</form>
-										@endif
+										<a href="{{url('/edit/'.$map->id)}}" class="btn btn-warning btn-sm">
+											<i class="far fa-edit"></i>
+										</a>
+										<a class="btn btn-danger btn-sm" href="{{url('/delete/'.$map->id)}}" >
+                                            <i class="far fa-trash-alt"></i>
+                                        </a>
                                     </td>
                                     <span class="cord" data-latitude="{{ $map->latitude }}" data-longitude="{{ $map->longitude }}"></span>
                                     <span class="date" data-from="{{ $map->from }}" data-to="{{ $map->to }}"></span>

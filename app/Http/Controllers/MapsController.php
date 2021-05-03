@@ -18,19 +18,25 @@ class MapsController extends Controller
         // $this->middleware('auth:admin');
         // $this->middleware('role:user')->only('index');
         //  $users = Users::where('years', '>', 20):
+        // $map = Maps::where('from','>',$request->from)
+        //             ->where('to', '<', $request->to)->get();
         //  return Excel::download( new UsersExport($users), 'users.xls');
     // }
 
     public function export(Request $request) 
     {   
-        // $map = Maps::where('from','>',$request->from)
-        //             ->where('to', '<', $request->to)->get();
         return Excel::download(new MapsExport, 'maps.xlsx');
     }
     
     public function index()
     {
-        $maps = Maps::get();
+        if(Auth::user()->roles->first()->name == 'user'){
+            $maps = Maps::where('admin_id',Auth::user()->id)->get();
+        }
+        else{
+            $maps = Maps::get();
+        }
+
         return view('/dashboard/index')->with('maps',$maps);
     }
 
@@ -52,10 +58,6 @@ class MapsController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::user()->roles->first()->name == 'user'){
-            return redirect('/index')->with('status', 'Access Denied!');
-
-        }
         
         $data = [
              'type' => $request->type,
@@ -71,10 +73,10 @@ class MapsController extends Controller
 
         $test = Maps::firstOrCreate($data);
         if($test->wasRecentlyCreated){
-            $status = 'Map Dublicated';
+            $status = 'Map uploaded';
             return redirect('/index')->with('uploaded',$status);
         }else{
-            $status = 'No Chnage Was Done';
+            $status = 'No Change was done';
             return back()->with(['uploaded' => $status]);
         }
 
@@ -100,12 +102,7 @@ class MapsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Maps $maps)
-    {
-        if(Auth::user()->roles->first()->name == 'user'){
-            return redirect('/index')->with('status', 'Access Denied!');
-
-        }
-        
+    {      
         return view('dashboard.edit')->with('map',$maps);
     }
 
@@ -118,9 +115,6 @@ class MapsController extends Controller
      */
     public function update(Request $request, Maps $maps)
     {
-        if(Auth::user()->roles->first()->name == 'user'){
-            return redirect('/index')->with('status', 'Access Denied!');
-        }
         if($request->input('action') == 'dublicate'){
            return $this->store($request);
         }
@@ -141,11 +135,6 @@ class MapsController extends Controller
      */
     public function destroy(Maps $maps)
     {
-        if(Auth::user()->roles->first()->name == 'user'){
-            return redirect('/index')->with('status', 'Access Denied!');
-
-        }
-
         $maps->delete();
         $status = 'Map Deleted';
         return back()->with(['status' => $status]); 
@@ -154,7 +143,12 @@ class MapsController extends Controller
     // ajax call jason responses
     public function ajaxmap()
    {
-       $maps = Maps::get();
+       if(Auth::user()->roles->first()->name == 'user'){
+            $maps = Maps::where('admin_id',Auth::user()->id)->get();
+        }
+        else{
+            $maps = Maps::get();
+        }
        return response()->json($maps, 200);
    }
 }

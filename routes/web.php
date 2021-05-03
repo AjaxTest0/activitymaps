@@ -19,14 +19,14 @@ Route::get('/about', function () { return view('about'); });
 Route::get('/contact', function () { return view('contact'); });
 Route::post('/contactus',[App\Http\Controllers\ContactUsController::class, 'store']);
 
-	Route::get('/maps/export/', [App\Http\Controllers\MapsController::class, 'export']);
 	Route::get('/index',[App\Http\Controllers\MapsController::class, 'index'])->middleware('verified');
 	Route::get('/ajaxmap',[App\Http\Controllers\MapsController::class, 'ajaxmap']);
 	Route::get('/edit/{maps}',[App\Http\Controllers\MapsController::class, 'edit'])->middleware('verified');
 	Route::get('/marker/{maps}',[App\Http\Controllers\MapsController::class, 'show'])->middleware('verified');
 	Route::post('/store',[App\Http\Controllers\MapsController::class, 'store']);
 	Route::post('/update/{maps}',[App\Http\Controllers\MapsController::class, 'update']);
-	Route::post('/delete/{maps}',[App\Http\Controllers\MapsController::class, 'destroy']);
+	Route::get('/delete/{maps}',[App\Http\Controllers\MapsController::class, 'destroy']);
+	Route::get('/maps/export/', [App\Http\Controllers\MapsController::class, 'export']);
 
 // Route::group('prefix'=>'maps', function(){
 // })

@@ -19,7 +19,7 @@
 				<div class="col-12">
 					<div class="card m-b-20">
 						<div class="card-body">
-							<h class=" m-2 header-title text-center font-weight-bold">New Record</h>
+							<h2 class=" m-2 header-title text-center font-weight-bold">New Record</h2>
 							<hr>
 							<div class="row ">
 								{{-- Fields --}}

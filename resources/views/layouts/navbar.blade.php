@@ -18,11 +18,9 @@
 
                     <ul class="navbar-nav">
                         @if(Illuminate\Support\Facades\Auth::check())
-                            @if(Auth::user()->roles->first()->name == 'super')
-                                <li class="nav-item ">
-                                    <a class="nav-link text-white font-weight-bold" href="/home">New Map Record</a>
-                                </li>
-                            @endif
+                            <li class="nav-item ">
+                                <a class="nav-link text-white font-weight-bold" href="/home">New Map Record</a>
+                            </li>
                         @endif
                         @auth
                             <li class="nav-item">
