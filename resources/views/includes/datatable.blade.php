@@ -1,8 +1,9 @@
-<div class="table-responsive-sm">
+ <div class="table-responsive-sm">
                 		<table id="example" class="table table-striped table-bordered">
                 			<thead>
                                 <tr> 
                                     <th>#</th>
+                                    <th>Uploaded By</th>
                     				<th>Type</th>	
                     				<th>Proponent</th>	
                     				<th>From</th>	
@@ -10,13 +11,14 @@
                     				<th>Description</th>	
                     				<th>Latitude</th>	
                     				<th>Longitude</th>
-                                    <th>Action</th>	
+                                    <th>Action</th>
                                 </tr>
                 			</thead>
                 			<tbody>
     							@foreach($maps as $key => $map)
                 				<tr>
                                     <td>{{ ++$key }}</td>
+                                    <td>{{ $maps->admins->name }}</td>
                 					<td>{{ $map->type }}</td>
                 					<td>{{ $map->proponent }}</td>
                 					<td>{{ $map->from }}</td>

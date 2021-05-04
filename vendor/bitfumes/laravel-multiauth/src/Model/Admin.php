@@ -7,6 +7,7 @@ use Bitfumes\Multiauth\Traits\hasPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Maps;
 
 class Admin extends Authenticatable implements MustVerifyEmail
 {
@@ -18,6 +19,11 @@ class Admin extends Authenticatable implements MustVerifyEmail
     {
         $role = config('multiauth.models.role');
         return $this->belongsToMany($role);
+    }
+
+    public function maps()
+    {
+        return $this->hasMany(Maps::class);
     }
 
     /**

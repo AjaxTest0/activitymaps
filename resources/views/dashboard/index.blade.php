@@ -29,7 +29,7 @@
 
     <div class="col-lg-12 my-3 clearfix">
         <div class="form-group col-3 border p-3 float-left">
-          <label for="from" class="font-weight-bold">From</label> 
+          <label for="from" class="font-weight-bold">tasdsadasdasdo</label> 
               <input type="dateTime" name="from" id="from" class="form-control" 
                 value={{ $maps->sortBy("from")->first()->from ?? date('Y-m-d H:i:s') }}>
           <label for="to" class="font-weight-bold">To</label> 
@@ -44,7 +44,7 @@
     </div>
 
     <div class="col-lg-12 my-3">
-      @include('includes.datatable')
+      {{-- @include('includes.datatable') --}}
     </div>
 
   </div>
