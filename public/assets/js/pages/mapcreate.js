@@ -15,7 +15,7 @@
 		        var longitude = Number($('#longitude').val(),10);
 		        if(longitude != 0 || !latitude != 0 ){
 		        	uluru = { 
-		        		lat: latitude, 
+		        		lat: latitude,
 		        		lng: longitude 
 		        	};
 		        }
@@ -52,5 +52,14 @@
 		        marker = new google.maps.Marker({
 		          position: uluru,
 		          map: map,
+		          icon:{
+		                path: 'M 0,0 C -2,-20 -10,-22 -10,-30 A 10,10 0 1,1 10,-30 C 10,-22 2,-20 0,0 z M -2,-30 a 2,2 0 1,1 4,0 2,2 0 1,1 -4,0',
+		                fillColor: $(`#example-color-input`).val(),
+		                fillOpacity: 1.0,
+		                strokeColor: '#000000',
+		                strokeWeight: 1,
+		                scale: 1,
+		                anchor: new google.maps.Point(12, 24),
+		            },
 		        });
 		      }
