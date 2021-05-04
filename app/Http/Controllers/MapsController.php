@@ -140,12 +140,7 @@ class MapsController extends Controller
     // ajax call jason responses
     public function ajaxmap()
    {
-       if(Auth::user()->roles->first()->name == 'user'){
-            $maps = Maps::where('admin_id',Auth::user()->id)->get();
-        }
-        else{
-            $maps = Maps::get();
-        }
-       return response()->json($maps, 200);
+        $maps = Maps::get();
+        return response()->json($maps, 200);
    }
 }

@@ -69,7 +69,7 @@
 {{-- 		                                    <span onClick="initMap()"><i class="fa fa-eye"></i></span> --}}
 		                                    </div>
 		                                </div>
-		                                 
+		                            
 
 		                                <div class="form-group row">
 		                                    <label for="example-color-input" class="col-lg-2 col-form-label">Marker Color:</label>

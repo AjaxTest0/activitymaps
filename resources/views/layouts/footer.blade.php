@@ -3,25 +3,31 @@
 		<div class="row">
 			<div class="col-lg-4">
 				<h4>Our History</h4>
-				<p class="text-justify px-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+				<p class="text-justify px-5">
+					{{ DB::table('frontends')->first()->our_history }}
+				</p>
 			</div>
 			<div class="col-lg-4">
 				<h4>Our Skill</h4>
-				<p class="text-justify px-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+				<p class="text-justify px-5">
+					{{ DB::table('frontends')->first()->our_skill }}
+				</p>
 			</div>
 			<div class="col-lg-4">
 				<h4>Our biography</h4>
-				<p class="text-justify px-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+				<p class="text-justify px-5">
+					{{DB::table('frontends')->first()->our_biography}}
+				</p>
 			</div>
 		</div>
 		<div class="">
-			<a href="#" class="fa fa-facebook fa-2x m-2 text-light "></a>
-			<a href="#" class="fab fa-twitter fa-2x m-2 text-light"></a>
-			<a href="#" class="fab fa-google fa-2x m-2 text-light"></a>
-			<a href="#" class="fab fa-linkedin fa-2x m-2 text-light"></a>	
-			<a href="#" class="fab fa-youtube fa-2x m-2 text-light"></a>
-			<a href="#" class="fab fa-instagram fa-2x m-2 text-light"></a>	
-			<a href="#" class="fab fa-pinterest fa-2x m-2 text-light"></a>	
+			<a href={{DB::table('frontends')->first()->facebook_link}} class="fa fa-facebook fa-2x m-2 text-light "></a>
+			<a href={{DB::table('frontends')->first()->twitter_link}} class="fab fa-twitter fa-2x m-2 text-light"></a>
+			<a href={{DB::table('frontends')->first()->google_link}} class="fab fa-google fa-2x m-2 text-light"></a>
+			<a href={{DB::table('frontends')->first()->linkedin_link}} class="fab fa-linkedin fa-2x m-2 text-light"></a>	
+			<a href={{DB::table('frontends')->first()->youtube_link}} class="fab fa-youtube fa-2x m-2 text-light"></a>
+			<a href={{DB::table('frontends')->first()->instagram_link}} class="fab fa-instagram fa-2x m-2 text-light"></a>	
+			<a href={{DB::table('frontends')->first()->pinterest_link}} class="fab fa-pinterest fa-2x m-2 text-light"></a>	
 		</div>
 	</div>
 	Copyright &copy; {{date('Y')}}. All Rights Reserved.

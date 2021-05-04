@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes(['verify' => true]);
 
-Route::get('/', function () { return view('welcome'); });
+Route::get('/', [App\Http\Controllers\frontendController::class, 'index']);
 Route::get('/about', function () { return view('about'); });
 Route::get('/contact', function () { return view('contact'); });
 Route::post('/contactus',[App\Http\Controllers\ContactUsController::class, 'store']);
