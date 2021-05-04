@@ -9,20 +9,12 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <!-- @auth -->
-                        <!-- @if(Auth::user()->role_id == 1) -->
-                            
-                        <!-- @endif -->
-                    <!-- @endauth     -->
 
                     <ul class="navbar-nav">
                         @if(Illuminate\Support\Facades\Auth::check())
-                            @if(Auth::user()->roles->first()->name == 'super')
                                 <li class="nav-item ">
                                     <a class="nav-link text-white font-weight-bold" href="/home">New Map Record</a>
                                 </li>
-                            @endif
                         @endif
                         @auth
                             <li class="nav-item">
@@ -59,15 +51,15 @@
                         @else
                             <li class="nav-item dropdown cc-blue">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-white cc-blue" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                   <span class="cc-blue">
-                                   {{ Auth::user()->name }}
-                                   </span> 
+                                    <span class="cc-blue">
+                                    {{ Auth::user()->name }}
+                                    </span> 
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right cc-bg-gray" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item cc-blue" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

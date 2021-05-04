@@ -63,13 +63,13 @@
         @include('layouts/navbar')
 
         @if (session('status'))
-            <div class="alert alert-danger" role="alert">
-                {{ session('status') }}
-            </div>
+        <div class="alert alert-danger" role="alert">
+            {{ session('status') }}
+        </div>
         @elseif(session('uploaded'))
-            <div class="alert alert-success" role="alert">
-                {{ session('uploaded') }}
-            </div>
+        <div class="alert alert-success" role="alert">
+            {{ session('uploaded') }}
+        </div>
         @endif
 
         <main>
@@ -86,13 +86,13 @@
     <script src="{{ asset('build/js/bootstrap-datetimepicker.min.js') }}"></script>
     <script type="text/javascript">
         $(function () {
-              $('#datetimepicker1').datetimepicker();
-              $('#datetimepicker2').datetimepicker();
-        });
-    </script>
+          $('#datetimepicker1').datetimepicker();
+          $('#datetimepicker2').datetimepicker();
+      });
+  </script>
 
-    <script>
-        $(document).ready(function() {
+  <script>
+    $(document).ready(function() {
             // show the alert
             setTimeout(function() {
                 $(".alert").alert('close');

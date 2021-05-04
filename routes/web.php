@@ -26,7 +26,7 @@ Route::post('/contactus',[App\Http\Controllers\ContactUsController::class, 'stor
 	Route::get('/marker/{maps}',[App\Http\Controllers\MapsController::class, 'show'])->middleware('verified');
 	Route::post('/store',[App\Http\Controllers\MapsController::class, 'store']);
 	Route::post('/update/{maps}',[App\Http\Controllers\MapsController::class, 'update']);
-	Route::post('/delete/{maps}',[App\Http\Controllers\MapsController::class, 'destroy']);
+	Route::get('/delete/{maps}',[App\Http\Controllers\MapsController::class, 'destroy']);
 
 // Route::group('prefix'=>'maps', function(){
 // })

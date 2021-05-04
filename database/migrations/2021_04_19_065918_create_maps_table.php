@@ -20,9 +20,10 @@ class CreateMapsTable extends Migration
             $table->dateTime('from');
             $table->dateTime('to');
             $table->string('description');
-            $table->decimal('latitude', 8,7);
-            $table->decimal('longitude', 8,7);
+            $table->decimal('latitude', 12,7);
+            $table->decimal('longitude', 12,7);
             $table->string('color');
+            $table->boolean('public')->default(0);
             $table->foreignId('admin_id')->constrained('admins');
             $table->timestamps();
         });
