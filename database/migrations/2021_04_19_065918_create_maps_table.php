@@ -19,6 +19,8 @@ class CreateMapsTable extends Migration
             $table->string('proponent');
             $table->dateTime('from');
             $table->dateTime('to');
+            $table->date('fromdate');
+            $table->date('todate');
             $table->string('description');
             $table->decimal('latitude', 12,7);
             $table->decimal('longitude', 12,7);

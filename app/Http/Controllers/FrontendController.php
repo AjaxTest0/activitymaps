@@ -25,7 +25,8 @@ class FrontendController extends Controller
      */
     public function create()
     {
-        //
+        $frontend = frontend::first();
+        return view('multiauth::admin.frontend',compact("frontend"));
     }
 
     /**
@@ -69,8 +70,10 @@ class FrontendController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, frontend $frontend)
-    {
-        //
+    {       
+        dd($frontend);
+        $frontend->update($request->all());
+        return back();
     }
 
     /**

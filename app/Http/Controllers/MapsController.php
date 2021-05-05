@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Maps;
-use Bitfumes\Multiauth\Model\Admin;
 use Illuminate\Http\Request;
 use App\Exports\MapsExport;
+use Bitfumes\Multiauth\Model\Admin;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\AdminMaps;
 
 
 
@@ -57,15 +58,17 @@ class MapsController extends Controller
     {
         
         $data = [
-             'type' => $request->type,
-             'proponent' => $request->proponent,
-             'from' => $request->from,
-             'to' => $request->to,
-             'description' => $request->description,
-             'latitude' => $request->latitude,
-             'longitude' => $request->longitude,
-             'color' => $request->color,
-             'admin_id' => auth()->user()->id,
+            'type' => $request->type,
+            'proponent' => $request->proponent,
+            'from' => $request->from,
+            'to' => $request->to,
+            'fromdate' => $request->from,
+            'todate' => $request->to,
+            'description' => $request->description,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'color' => $request->color,
+            'admin_id' => auth()->user()->id,
         ];
 
         $test = Maps::firstOrCreate($data);
@@ -98,9 +101,10 @@ class MapsController extends Controller
      * @param  \App\Models\Maps  $maps
      * @return \Illuminate\Http\Response
      */
-    public function edit(Maps $maps)
-    {      
-        return view('dashboard.edit')->with('map',$maps);
+    public function edit(Maps $map)
+    {
+        $users = Admin::where('id','!=',Auth::user()->id)->get();
+        return view('dashboard.edit', compact('users','map'));
     }
 
     /**
@@ -113,12 +117,32 @@ class MapsController extends Controller
     public function update(Request $request, Maps $maps)
     {
         if($request->input('action') == 'dublicate'){
-           return $this->store($request);
+            return $this->store($request);
         }
-
-        $input = $request->except(['action']);
+        $input = [
+            'type' => $request->type,
+            'proponent' => $request->proponent,
+            'from' => $request->from,
+            'to' => $request->to,
+            'fromdate' => $request->from,
+            'todate' => $request->to,
+            'description' => $request->description,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'color' => $request->color,
+            'admin_id' => auth()->user()->id,
+        ];
 
         $maps->update($input);
+        foreach ($request->users as  $user){
+            AdminMaps::create([
+                'admin_id' => $user,
+                'maps_id' => $request->id,
+            ]);
+
+        }
+
+
         $status = 'Map Updated';
         return redirect('/index')->with('uploaded',$status);
         

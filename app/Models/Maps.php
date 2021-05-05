@@ -22,4 +22,9 @@ class Maps extends Model
             return $this->belongsTo(Admin::class);
         }
 
+        public function admins()
+        {
+            return $this->belongsToMany(Admin::class, "admin_maps");
+        }
+
 }
