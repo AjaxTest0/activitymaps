@@ -22,20 +22,34 @@ function initMap() {
                     lng: Number(maps[i]['longitude'])
                 };
                 addMarker(uluru, maps, i);
-                $(`#from,#to`).change(function() {
-                    markers[i].setMap(null);
-                    markers[i]= null;
-                    if( maps[i]['fromdate'] >= $('#from').val() && maps[i]['todate'] <= $('#to').val() ){
-                            addMarker(uluru, maps, i);
-                    }
-                });
-                
             }
         },
         error: function() {
             console.log(maps);
         }
     });
+
+    $("#more").click(function () {
+        markersnull();
+        for (let index = 0; index < markers.length; index++) {
+            
+            addMarker();
+        }
+        // markers.forEach(function(i, item){
+        //     console.log(item[i]);
+        // });
+        // markers[i].setMap(null);
+        // markers = null;
+        // if( maps[i]['fromdate'] >= $('#from').val() && maps[i]['todate'] <= $('#to').val() ){
+        //     addMarker(uluru, maps, i);
+        // }
+    });
+    function markersnull() {
+        for (let index = 0; index < markers.length; index++) {
+            markers[i].setMap(null);
+            markers[i] = null;
+        }
+    }
 
     function addMarker(coords, maps, i) {
         marker = new google.maps.Marker({
@@ -51,12 +65,10 @@ function initMap() {
                 anchor: new google.maps.Point(12, 24),
             },
         });
-        markers.push(marker);
+        markers[i] = marker;
         attachSecretMessage(marker, maps, i);
     };
 
-    // Attaches an info window to a marker with the provided message. When the
-    // marker is clicked, the info window will open with the secret message.
     function attachSecretMessage(marker, Maps, i) {
         contentmsg = `
             <div><b class="font-weight-bold">Type:</b> ${Maps[i]['type']} </div>
@@ -71,4 +83,6 @@ function initMap() {
             infowindow.open(marker.get("map"), marker);
         });
     }
+    
+
 }

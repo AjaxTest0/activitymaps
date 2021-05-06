@@ -23,7 +23,6 @@
         <div id="map"></div>
         <script	src="https://maps.googleapis.com/maps/api/js?key={{ trim(\DB::table('apis')->pluck('api'), '[""]') }}&callback=initMap&libraries=&v=weekly" async>
         </script>
-        <script src="{{asset('assets/js/pages/mapIndex.js')}}"></script>
     </div>
 
     <div class="col-lg-12 my-3 clearfix">
@@ -34,6 +33,7 @@
         <label for="to" class="font-weight-bold">To</label> 
             <input type="dateTime" name="to" id="to" class="form-control" 
               value={{ $maps->sortByDesc("to")->first()->to ?? date('Y-m-d H:i:s') }}>
+        <div class="btn btn-primary" id="more">View events</div>
       </div>
       @if(Auth::user()->roles->first()->name == 'super')
       <div class="float-right">
@@ -54,4 +54,5 @@
       $('#example').DataTable();
   } );
 </script>
+<script src="{{asset('assets/js/pages/mapIndex.js')}}"></script>
 @endsection
