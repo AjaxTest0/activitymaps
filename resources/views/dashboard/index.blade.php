@@ -25,15 +25,15 @@
         </script>
     </div>
 
-    <div class="col-lg-12 my-3 clearfix">
-      <div class="form-group col-3 border p-3 float-left">
+    <div class="col-12 my-3 clearfix">
+      <div class="form-group col-lg-3 col-md-12 col-sm-12 border p-3 float-left">
         <label for="from" class="font-weight-bold">from</label> 
             <input type="dateTime" name="from" id="from" class="form-control" 
               value={{ $maps->sortBy("from")->first()->from ?? date('Y-m-d H:i:s') }}>
         <label for="to" class="font-weight-bold">To</label> 
             <input type="dateTime" name="to" id="to" class="form-control" 
               value={{ $maps->sortByDesc("to")->first()->to ?? date('Y-m-d H:i:s') }}>
-        <div class="btn btn-primary" id="more">View events</div>
+        <div class="btn btn-primary m-3 float-right" id="more">View events</div>
       </div>
       @if(Auth::user()->roles->first()->name == 'super')
       <div class="float-right">

@@ -15,10 +15,13 @@
 								</tr>
 							</thead>
 							<tbody>
+								@php($i = 1)
 								@foreach($maps as $key => $map)
+
 								@if($map->is_public == 1 || Auth::user()->roles->first()->name == 'super' || $map->admin_id == Auth::user()->id || $map->admins->find(Auth::user()->id) )
+								
 									<tr>
-										<td>{{ ++$key }}</td>
+										<td>{{ $i}}</td>
 										<td>{{ $map->type }}</td>
 										<td>{{ $map->proponent }}</td>
 										<td>{{ $map->from }}</td>
@@ -41,8 +44,13 @@
 											@endif
 										</td>
 										<span class="cord" data-latitude="{{ $map->latitude }}" data-longitude="{{ $map->longitude }}"></span>
+										<span id="User_id" data-id={{Auth::user()->id}} data-role={{Auth::user()->roles->first()->name}}></span>
 									</tr>
+									@php($i++)
+								@else
+									@php($key --)
 								@endif
+								
 								@endforeach
 							</tbody>
 						</table>

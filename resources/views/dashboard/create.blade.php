@@ -36,7 +36,7 @@
 									<div class="form-group row mb-0">
 										<label for="proponent" class="col-lg-2 col-form-label">Proponent Name:</label>
 										<div class="col-12">
-											<input class="form-control" type="text" placeholder="Enter your Current Location" 
+											<input class="form-control" type="text" placeholder="Enter Proponent Name" 
 											name="proponent" id="proponent" required>
 										</div>
 									</div>
@@ -80,7 +80,7 @@
 
 
 									<div class="form-group row">
-										<label for="example-color-input" class="col-lg-2 col-form-label">Color:</label>
+										<label for="example-color-input" class="col-lg-2 col-form-label">Colour:</label>
 										<div class="col-12">
 											<input class="form-control" type="color" value="#67a8e4" id="example-color-input" name="color" required>
 										</div>

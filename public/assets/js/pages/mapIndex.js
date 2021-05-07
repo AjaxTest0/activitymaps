@@ -4,6 +4,7 @@ function initMap() {
     let uluru;
     let markers = []
     let marker;
+    let maps;
     uluru = { lat: -25.344, lng: 131.036 };
     // The map, centered at Uluru
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -16,38 +17,36 @@ function initMap() {
         type: 'GET', //THIS NEEDS TO BE GET
         url: '/ajaxmap',
         success: function(maps) {
+            maps = maps;
             for (let i = 0; i < maps.length; ++i) {
                 let uluru = {
                     lat: Number(maps[i]['latitude']),
                     lng: Number(maps[i]['longitude'])
                 };
-                addMarker(uluru, maps, i);
+
+                if( maps[i]["admin_id"] == $(`#User_id`).data('id') || maps[i]["is_public"] == 1 || $(`#User_id`).data('role') == 'super' ){
+                    addMarker(uluru, maps, i);
+                }
+
             }
         },
         error: function() {
             console.log(maps);
         }
     });
-
+    
+    console.log(maps);
     $("#more").click(function () {
         markersnull();
-        for (let index = 0; index < markers.length; index++) {
-            
+        console.log(maps);
+        for (let index = 0; index < maps.length; index++) {     
             addMarker();
+
         }
-        // markers.forEach(function(i, item){
-        //     console.log(item[i]);
-        // });
-        // markers[i].setMap(null);
-        // markers = null;
-        // if( maps[i]['fromdate'] >= $('#from').val() && maps[i]['todate'] <= $('#to').val() ){
-        //     addMarker(uluru, maps, i);
-        // }
     });
     function markersnull() {
         for (let index = 0; index < markers.length; index++) {
-            markers[i].setMap(null);
-            markers[i] = null;
+            markers[index].setMap(null);
         }
     }
 
@@ -65,17 +64,17 @@ function initMap() {
                 anchor: new google.maps.Point(12, 24),
             },
         });
-        markers[i] = marker;
+        markers.push(marker);
         attachSecretMessage(marker, maps, i);
     };
-
+    
     function attachSecretMessage(marker, Maps, i) {
         contentmsg = `
-            <div><b class="font-weight-bold">Type:</b> ${Maps[i]['type']} </div>
-            <div><b class="font-weight-bold">Proponent:</b> ${Maps[i]['proponent']} </div>
-            <div><b class="font-weight-bold">Location:</b> ${Maps[i]['latitude']},${Maps[i]['longitude']} </div>
-            <div><b class="font-weight-bold">Time:</b> From :${Maps[i]['from']},To: ${Maps[i]['to']} </div>
-            `
+        <div><b class="font-weight-bold">Type:</b> ${Maps[i]['type']} </div>
+        <div><b class="font-weight-bold">Proponent:</b> ${Maps[i]['proponent']} </div>
+        <div><b class="font-weight-bold">Location:</b> ${Maps[i]['latitude']},${Maps[i]['longitude']} </div>
+        <div><b class="font-weight-bold">Time:</b> From :${Maps[i]['from']},To: ${Maps[i]['to']} </div>
+        `
         const infowindow = new google.maps.InfoWindow({
             content: contentmsg,
         });
@@ -84,5 +83,13 @@ function initMap() {
         });
     }
     
-
+    
 }
+// markers.forEach(function(i, item){
+//     console.log(item[i]);
+// });
+// markers[i].setMap(null);
+// markers = null;
+// if( maps[i]['fromdate'] >= $('#from').val() && maps[i]['todate'] <= $('#to').val() ){
+//     addMarker(uluru, maps, i);
+// }
